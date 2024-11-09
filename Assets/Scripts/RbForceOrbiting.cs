@@ -30,7 +30,7 @@ public class RbForceOrbiting : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.transform.parent.transform.parent.name == targetName)
+        if(collision!= null && collision.transform.parent.transform.parent.name == targetName+"Group")
         {
             Debug.Log(collision.transform.parent.transform.parent.name + $"target = {targetName}");
             if (collision.gameObject.name == "OuterPull")
@@ -43,8 +43,8 @@ public class RbForceOrbiting : MonoBehaviour
                 meteorRB.AddForce(direction * pullForce);
             }
         }
-
     }
+
     void ResetMeteor()
     {
         transform.position = initPos;
